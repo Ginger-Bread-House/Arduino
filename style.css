@@ -14,7 +14,7 @@ body {
   background-color: #24565d;
   color: #ffffff;
   margin: 10px;
-  padding: 0px;              /* mag nu > 0 zijn */
+  padding: 0px;         
   float: left;
   text-align: center;
 }
@@ -109,3 +109,8 @@ footer {
    width: 1040px;
    margin: auto;
 }
+
+.afbeeldingen img {
+    width: 20px;
+    box-sizing: border-box;
+  }
