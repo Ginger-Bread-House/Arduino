@@ -7,7 +7,7 @@ body {
 .run_reset {
   box-sizing: border-box;
   width: 60px;
-  height: 30px;
+  height: 35px;
   font-family: Bitter;
   font-weight: 600;
   font-size: 9pt;
@@ -22,7 +22,7 @@ body {
 .deelkopje_nav {
    box-sizing: border-box;
    width: 200px ;
-   height: 30px ;
+   height: 35px ;
    font-family: Bitter ;
    font-weight: 600;
    font-size: 9pt;
