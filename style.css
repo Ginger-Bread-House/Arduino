@@ -5,30 +5,33 @@ body {
 }
 
 .run_reset {
-width: 60px ;
-height: 30px ;
-font-family: Bitter ;
-font-weight: 600;
-font-size: 3pt;
-background-color: #24565d;
-color: #ffffff;
-margin: 10px 10px 10px 10px;
-padding: 10px;
-float: left;
+  box-sizing: border-box;
+  width: 60px;
+  height: 30px;
+  font-family: Bitter;
+  font-weight: 600;
+  font-size: 9pt;
+  background-color: #24565d;
+  color: #ffffff;
+  margin: 10px;
+  padding: 0px;              /* mag nu > 0 zijn */
+  float: left;
+  text-align: center;
 }
 
 .deelkopje_nav {
-   width: 60px ;
+   box-sizing: border-box;
+   width: 200px ;
    height: 30px ;
    font-family: Bitter ;
    font-weight: 600;
-   font-size: 3pt;
+   font-size: 9pt;
    background-color: #658B6F;
    color: #ffffff;
    margin: 10px 10px 10px 10px;
-   padding: 10px;
+   padding: 0px;
    float: right;
-   
+   text-align: center;
 }
 
 .koptitel {
