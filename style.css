@@ -16,37 +16,6 @@ margin: 10px 10px 20px 10px;
 padding: 10px;
 }
 
-.inhoudsopgave {
-   width: 220px;
-   height: 300px; 
-   font-family: Bitter;
-   font-weight: 600;
-   font-Weight: 500;
-   font-size: 15pt;
-   background-color: #658B6F;
-   color: #ffffff;
-   margin: 20px 10px 20px 10px; 
-   padding: 10px; 
-   float: right;
-   text-align: center;
-}
-
-.inhoudsopgave a {
-   color: white;
-   text-decoration: none;
-   font-size: 15pt;
-}
-
-.inhoudsopgave a:hover {
-   text-decoration: underline;
- }
-
-#bigimage img {
-   width: 1020px;
-   margin: 20px 10px 20px 10px;
-   box-sizing: border-box;
- }
-
 .samenvatting_homepage {
    width: 1000px; 
    height: 285px; 
@@ -122,14 +91,6 @@ padding: 10px;
    margin: 20px 10px 20px 10px; 
    padding: 10px;
    clear: both;
-}
-
-.plaatjes_klein img {
-   width: 326.5px; 
-   height: 190px;
-   float: left;
-   margin: 20px 10px 0px 10px; 
-   box-sizing: border-box;
 }
 
 .clear {
