@@ -62,7 +62,7 @@ body {
 
 .kop_samenvattingMaatregelen{
    width: 1000px; 
-   height: 150px; 
+   height: 210px; 
    font-family: Bitter;
    font-weight: 500; 
    font-size: 15pt; 
@@ -92,6 +92,20 @@ padding: 10px;
 float: left;
 }
 
+.muzieknoten_begin {
+width: 60px ;
+height: 30px ;
+font-family: Bitter ;
+font-weight: 600;
+font-size: 10pt;
+background-color: #24565d;
+color: #ffffff;
+margin: 10px 10px 10px 300px;
+padding: 10px;
+float: left;
+clear:left; 
+}
+
 footer {
   clear: both;
   width: 1000px; 
@@ -113,4 +127,11 @@ footer {
 .afbeeldingen img {
     width: 20px;
     box-sizing: border-box;
+    margin: 0px 0px 0px 20px
+  }
+
+  .afbeeldingen_groot img {
+    width: 20px;
+    box-sizing: border-box;
+    margin: -10px 0px 0px 20px
   }
