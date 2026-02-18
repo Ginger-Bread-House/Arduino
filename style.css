@@ -36,16 +36,26 @@ body {
 
 .koptitel {
    width: 1000px; 
-   height: 200px; 
+   min-height: 220px;
    font-family: Bitter; 
    font-weight: 600; 
    font-size: 14pt; 
-   background-color: #24565d; 
-   color: #ffffff; 
+   background-color: #dbeff1; 
+   color: #000; 
    margin: 20px 10px 20px 10px; 
    padding: 10px;
    clear: both; 
+   overflow: hidden; 
 }
+
+#notation {
+   width: 620px;   /* iets breder dan de renderer */
+   height: 200px;  /* overeenkomend met renderer.resize */
+   background-color: white;
+   border: 2px solid black;
+   margin-top: 10px;
+}
+
 
 .kop_samenvatting {
    width: 1000px; 
