@@ -44,7 +44,7 @@ window.onload = function() {
   // tweede maat
   const stave2 = new VF.Stave(310, 40, 300);      // x=310 y=40 breedte=300
   stave2.setContext(context);
-  stave2.setEndBarType(VF.Barline.type.DOUBLE);  // maatstreep
+  stave2.setEndBarType(VF.Barline.type.SINGLE);  // maatstreep
   stave2.draw();                                 // teken hier pas
 
 
