@@ -134,12 +134,6 @@ footer {
    margin: auto;
 }
 
-.afbeeldingen img {
-    width: 20px;
-    box-sizing: border-box;
-    margin: 0px 0px 0px 20px
-  }
-
   .afbeeldingen_groot img {
     width: 20px;
     box-sizing: border-box;
