@@ -1,0 +1,37 @@
+<!--Alle code is gevalideerd: https://validator.w3.org/nu/#textarea -->
+<!-- Om een port te openen: $ bash python3 -m http.server 8080 in de terminal -->
+<!-- Indien je gepushed hebt en niet eerst gepulled typ eerst: git pull --rebase  en daarna: git push -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arduino Controller</title>
+</head>
+<body>
+
+<h2>Start Arduino</h2>
+
+<button id="speelKnop">Speel</button>
+
+<script>
+  
+document.getElementById("speelKnop").addEventListener("click", function() {
+
+  fetch("http://192.168.178.97:8080/start", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+  "notes": ["C4", "E4", "G4"],
+  "tempo": 120
+})
+  })
+  .then(response => response.text())
+  .then(data => console.log("Server zegt:", data))
+  .catch(error => console.error("Fout:", error));
+
+});
+</script>
+
+</body>
+</html>
