@@ -90,6 +90,14 @@ window.onload = function() {
 
   ];
 
+  // Maak een voice en verbind met de context
+  const voice3 = new VF.Voice({num_beats: 4, beat_value: 4}); // num_beats is de hoeveelheid kwartnoten. beat_value is de maatsoort, hier dus 4/4
+  voice3.addTickables(notes3);
+
+  // Format zodat de noten op de balk passen en teken de noten
+  new VF.Formatter().joinVoices([voice3]).format([voice3], 280);
+  voice3.draw(context, stave3);
+
 
   // Vierde maat
   const stave4 = new VF.Stave(40, 80, staveWidth);      // x=40 y=80 breedte=300
