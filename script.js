@@ -1,8 +1,3 @@
-document.getElementById("test").addEventListener("click", function() {
-  this.style.color = "#87fe2c";
-});
-
-
 // Opslaan van de noten
 
 let notesData = [];         // Array waarin de noten worden opgeslagen
@@ -14,17 +9,24 @@ const beatValue = 4;        // 4 kwartnoten passen in één maat
 
 document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript uit als de hele HTML pagina geladen is
 
+  // Reset knop
+  document.getElementById("test").addEventListener("click", function() {
+  this.style.color = "#87fe2c";
+  });
+
   renderScore();  // Tekent een lege notenbalk
 
   document.querySelectorAll(".noteButton").forEach(button => {  // Zoekt de afbeeldingen met de class "noteButton"
     button.addEventListener("click", function () {              // Voegt klikfuctie toe aan die afbeeldingen
 
-      const duration = this.dataset.duration;   // Leest de duur van de noot af uit de html
+      const duration = this.dataset.duration;           // Leest de duur van de noot af uit de html
+      const accidental = this.dataset.accidental || ""; // Leest af of de noot eventueel een mol of kruis heeft
 
       // Noot toevoegen aan de array
       notesData.push({
         key: "c/4",         // Standaard hoogte van de noot
-        duration: duration  // De duur van de noot op de gekozen afbeelding
+        duration: duration,  // De duur van de noot op de gekozen afbeelding
+        accidental: accidental  // Of er eventueel een mol of kruis staat bij de noot
       });
 
       selectedIndex = notesData.length - 1; // Automatisch selecteren van de laatste noot
@@ -48,12 +50,12 @@ function renderScore() {
 
   // Maakt een renderer
   const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-  renderer.resize(1000, 350);             // Breedte en hoogte van het tekengebied
+  renderer.resize(980, 200);             // Breedte en hoogte van het tekengebied
   const context = renderer.getContext();  // Ophalen van de tekencontext
 
   const staveWidth = 280; // Breedte van een maat
-  const marginX = 40;     // Marge aan de linkerkant
-  const marginY = 10;     // Marge aan de bovenkant
+  const marginX = 70;     // Marge aan de linkerkant
+  const marginY = -10;     // Marge aan de bovenkant
 
   let currentX = marginX; // Startpositie X
   let currentY = marginY; // Startpositie Y
@@ -98,10 +100,24 @@ function renderScore() {
 
       if (beatsUsed + beats > beatsPerMeasure) break; // Als de maat vol is dan stoppen
 
+      const parts = noteData.key.split("/");
+      const pitch = parts[0];
+      const octave = parts[1];
+      
+      const keyWithAccidental = pitch + (noteData.accidental || "") + "/" + octave;
+
       const staveNote = new VF.StaveNote({
-        keys: [noteData.key],       // De toonhoogte van de noot
+        keys: [keyWithAccidental],  // De toonhoogte van de noot
         duration: noteData.duration // De duur van de noot
       });
+
+      // ALS er een accidental is → voeg die toe aan VexFlow
+      if (noteData.accidental) {
+        staveNote.addModifier(
+          new VF.Accidental(noteData.accidental),
+          0
+        );
+      }
 
       // Als de noot geselecteerd is, dan wordt hij rood
       if (i === selectedIndex) {
