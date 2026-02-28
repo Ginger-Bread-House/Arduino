@@ -9,6 +9,39 @@ const beatValue = 4;        // 4 kwartnoten passen in één maat
 
 document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript uit als de hele HTML pagina geladen is
 
+// Run knop
+  document.getElementById("runMelodie").addEventListener("click", function() {
+// De tekst wordt even groen om visueel te laten zien dat hij gereset is
+      this.style.color = "#87fe2c"; 
+      setTimeout(() => {
+        this.style.color = "";
+      }, 600);
+
+  alert("Uw melodie wordt verzonden!");
+
+// zelf gecomponeerde melodie verzenden:
+
+  if (notesData.length === 0) {
+    console.log("Geen noten om te versturen");
+    return;
+  }
+
+  fetch("http://192.168.178.97:8080/start", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      type: "melodie",
+      notes: notesData
+    })
+  })
+  .then(response => response.text())
+  .then(data => console.log("Server zegt:", data))
+  .catch(error => console.error("Fout:", error));
+
+});
+
   // Reset knop
   document.getElementById("resetNotenbalk").addEventListener("click", function() {
 
@@ -247,6 +280,9 @@ function handleArrowKeys(e) {
 
 //DATA VAN KNOPPEN VERZENDEN
 
+
+//3 Liedjes verzenden:
+
 //Zoek elementen met de class 'speelKnop' en luister of er op gekliktt wordt. Zo ja, voer deze functie uit voor elk van deze knoppen.
 document.querySelectorAll(".speelKnop").forEach(knop => {
   knop.addEventListener("click", function() {
@@ -272,3 +308,4 @@ document.querySelectorAll(".speelKnop").forEach(knop => {
 
 });
 });
+
