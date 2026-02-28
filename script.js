@@ -22,11 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
       const duration = this.dataset.duration;           // Leest de duur van de noot af uit de html
       const accidental = this.dataset.accidental || ""; // Leest af of de noot eventueel een mol of kruis heeft
 
+      const isRest = this.alt.includes("rust");
+
       // Noot toevoegen aan de array
       notesData.push({
         key: "c/4",         // Standaard hoogte van de noot
-        duration: duration,  // De duur van de noot op de gekozen afbeelding
-        accidental: accidental  // Of er eventueel een mol of kruis staat bij de noot
+        duration: isRest ? duration + "r" : duration,  // De duur van de noot op de gekozen afbeelding
+        accidental: isRest ? "" : accidental  // Of er eventueel een mol of kruis staat bij de noot
       });
 
       selectedIndex = notesData.length - 1; // Automatisch selecteren van de laatste noot
@@ -92,10 +94,13 @@ function renderScore() {
 
       const noteData = notesData[i];  // De huidige noot
 
+      // Verwijdert eventueel de 'r' van rusten
+      const baseDuration = noteData.duration.replace("r", "");
+
       // Waarde van de noot?
       const beats =
-        noteData.duration === "w" ? 4 :
-        noteData.duration === "h" ? 2 :
+        baseDuration === "w" ? 4 :
+        baseDuration === "h" ? 2 :
         1;
 
       if (beatsUsed + beats > beatsPerMeasure) break; // Als de maat vol is dan stoppen
@@ -104,7 +109,7 @@ function renderScore() {
       const pitch = parts[0];
       const octave = parts[1];
       
-      const keyWithAccidental = pitch + (noteData.accidental || "") + "/" + octave;
+      const keyWithAccidental = pitch + "/" + octave; 
 
       const staveNote = new VF.StaveNote({
         keys: [keyWithAccidental],  // De toonhoogte van de noot
@@ -113,10 +118,10 @@ function renderScore() {
 
       // ALS er een accidental is → voeg die toe aan VexFlow
       if (noteData.accidental) {
-        staveNote.addModifier(
-          new VF.Accidental(noteData.accidental),
-          0
-        );
+        staveNote.addAccidental(
+          0,
+          new VF.Accidental(noteData.accidental)
+       );
       }
 
       // Als de noot geselecteerd is, dan wordt hij rood
