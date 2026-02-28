@@ -10,7 +10,7 @@ const beatValue = 4;        // 4 kwartnoten passen in één maat
 document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript uit als de hele HTML pagina geladen is
 
   // Reset knop
-  document.getElementById("test").addEventListener("click", function() {
+  document.getElementById("resetNotenbalk").addEventListener("click", function() {
 
     if (confirm("Weet je zeker dat je alle noten wilt verwijderen?")) {
   
@@ -247,17 +247,23 @@ function handleArrowKeys(e) {
 
 //DATA VAN KNOPPEN VERZENDEN
 
-//Zoek het element in de html met de ID 'speelKnopLied1' en luister of er op gekliktt wordt. Zo ja, voer deze functie uit.
-document.getElementById("speelKnopLied1").addEventListener("click", function() {
-
+//Zoek elementen met de class 'speelKnop' en luister of er op gekliktt wordt. Zo ja, voer deze functie uit voor elk van deze knoppen.
+document.querySelectorAll(".speelKnop").forEach(knop => {
+  knop.addEventListener("click", function() {
+  
+// de knop waarop is geklikt leest de waarde van data-lied. dit is dus lied1, lied2 of lied3
+    const lied = this.dataset.lied;
+    
 // Verzend een verzoek naar het volgende IP adres om de volgende data te versturen in JSON vorm
   fetch("http://192.168.178.97:8080/start", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-//Stuur de volgende string. in dit geval 'lied1'
-    body: JSON.stringify("lied1")
+//Stuur de volgende string. 
+    body: JSON.stringify({
+        lied: lied
+      })
   })
 //Wacht op en antwoord van de server. Als de serverd ata terug stuurt, wordt het geprint in de vorm van "Server zegt: (data)" Als er een fout is, print het ind e vorm "Fout: (data)"
   .then(response => response.text())
@@ -265,4 +271,4 @@ document.getElementById("speelKnopLied1").addEventListener("click", function() {
   .catch(error => console.error("Fout:", error));
 
 });
-
+});
