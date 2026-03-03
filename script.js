@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
     return;
   }
 
-  fetch("http://192.168.178.97:8080/start", {
+  fetch("http://192.168.2.12:8080/start", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -284,14 +284,14 @@ function handleArrowKeys(e) {
 //3 Liedjes verzenden:
 
 //Zoek elementen met de class 'speelKnop' en luister of er op gekliktt wordt. Zo ja, voer deze functie uit voor elk van deze knoppen.
-document.querySelectorAll(".speelKnop").forEach(knop => {
+document.querySelectorAll(".liedKnop").forEach(knop => {
   knop.addEventListener("click", function() {
   
 // de knop waarop is geklikt leest de waarde van data-lied. dit is dus lied1, lied2 of lied3
     const lied = this.dataset.lied;
     
 // Verzend een verzoek naar het volgende IP adres om de volgende data te versturen in JSON vorm
-  fetch("http://192.168.178.97:8080/start", {
+  fetch("http://192.168.2.12:8080/start", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
