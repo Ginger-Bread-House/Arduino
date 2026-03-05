@@ -25,13 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
     console.log("Geen noten om te versturen");
     return;
   }
+   // als er geen noten in de lijst staan, wordt dat gelogd
 
-  fetch("http://192.168.2.12:8080/start", {
-    method: "POST",
+  fetch("http://192.168.2.12:8080/start", { 
+    method: "POST", //vraagt aan de server met dat IP-adres iets te versturen
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json" //verstuurt data in JSON-vorm
     },
-    body: JSON.stringify({
+    body: JSON.stringify({ //inhoud die wordt verzonden onder de naam 'melodie'
       type: "melodie",
       notes: notesData
     })
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
   .then(response => response.text())
   .then(data => console.log("Server zegt:", data))
   .catch(error => console.error("Fout:", error));
-
+//Wacht op en antwoord van de server. Als de server data terug stuurt, wordt het geprint in de vorm van "Server zegt: (data)" Als er een fout is, print het ind e vorm "Fout: (data)"
 });
 
   // Reset knop
