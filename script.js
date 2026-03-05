@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
 
 // Run knop
   document.getElementById("runMelodie").addEventListener("click", function() {
-// De tekst wordt even groen om visueel te laten zien dat hij gereset is
+// De tekst wordt even groen om visueel te laten zien dat hij verstuurd is
       this.style.color = "#87fe2c"; 
       setTimeout(() => {
         this.style.color = "";
