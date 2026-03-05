@@ -11,11 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
 
 // Run knop
   document.getElementById("runMelodie").addEventListener("click", function() {
-// De tekst wordt even groen om visueel te laten zien dat hij verstuurd is
-      this.style.color = "#87fe2c"; 
-      setTimeout(() => {
-        this.style.color = "";
-      }, 600);
 
   alert("Uw melodie wordt verzonden!");
 
@@ -51,13 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {  // Voert JavaScript
       notesData = [];        // Leegt de array
       selectedIndex = null;  // Zorgt ervoor dat er geen noten meer geselecteerd zijn
       renderScore();         // Tekent een lege notenbalk
-
-      // De tekst wordt even groen om visueel te laten zien dat hij gereset is
-      this.style.color = "#87fe2c"; 
-
-      setTimeout(() => {
-        this.style.color = "";
-      }, 600);
 
     }
   
